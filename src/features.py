@@ -64,6 +64,8 @@ def build(hist, tgt, ctx):
     P["tps3"] = P.y3 / P.sh3.clip(lower=1)
     P["sh_trend"] = P.sh3 / P[["sh1", "sh2"]].max(axis=1).clip(lower=1)
     P["occ_mean"] = P[["occ1", "occ2", "occ3"]].mean(axis=1)
+    P["first_day"] = np.argmax(P[["y1", "y2", "y3"]].values > 0, axis=1) + 1
+    P["sh_r31"] = (P.sh3 + 1) / (P.sh1 + 1)
     P = P.reset_index()
 
     # film-level aggregates
@@ -78,7 +80,17 @@ def build(hist, tgt, ctx):
     Fd["f_nc_trend"] = Fd.fnc3 / Fd.fnc1.clip(lower=1)
     Fd["f_occ"] = h.groupby("movie_title").occupation_rate.mean()
     Fd["f_tps3"] = h[h.d == 3].groupby("movie_title").total_ticket.sum() / h[h.d == 3].groupby("movie_title").total_show.sum()
+    fsh = h.groupby(["movie_title", "d"]).total_show.sum().unstack().reindex(columns=[1, 3], fill_value=0).fillna(0)
+    Fd["f_sh_r31"] = (fsh[3] + 1) / (fsh[1] + 1)
     Fd = Fd.join(d1)
+    mk = ctx["market"]
+    rows = [mk[(mk.d1 < t) & (mk.d1 >= t - pd.Timedelta(days=28))][["occ", "tps", "logT", "lpc"]].median().tolist() + [
+        ((mk.d1 < t) & (mk.d1 >= t - pd.Timedelta(days=28))).sum()] for t in Fd.d1]
+    Fd[["mk_occ", "mk_tps", "mk_logT", "mk_lpc", "mk_n"]] = rows
+    Fd["film_pc_vs_mkt"] = np.log1p(Fm / Fd[["fnc1", "fnc2", "fnc3"]].max(axis=1).clip(lower=1)) - Fd.mk_lpc
+    Fd["occ_rel"] = Fd.f_occ / Fd.mk_occ
+    Fd["tps_rel"] = Fd.f_tps3 / Fd.mk_tps
+    Fd["logT_rel"] = Fd.f_logT - Fd.mk_logT
     Fd["base"] = base_title(pd.Series(Fd.index, index=Fd.index))
     Fd["fmt"] = fmt(pd.Series(Fd.index, index=Fd.index)).map({"2D": 0, "3D": 1, "IMAX 2D": 2, "IMAX 3D": 3})
     bT = h.assign(base=base_title(h.movie_title)).groupby("base").total_ticket.sum() / 3
@@ -115,8 +127,13 @@ def build(hist, tgt, ctx):
     X["cal_mult"] = X.cal_t / X.cal_hist
     X["hol_in_hist"] = np.stack([cal.is_hol.reindex(X.d1 + pd.Timedelta(days=k)).values for k in range(3)], 1).sum(1)
     X["n_comp_open"] = _open_count(X, ctx["releases"])
+    days = [X.d1 + pd.Timedelta(days=k) for k in range(1, 10)]
+    X["n_wed_passed"] = sum(((dd <= X.date_show) & (dd.dt.dayofweek == 2)).astype(int) for dd in days)
+    X["n_thu_passed"] = sum(((dd <= X.date_show) & (dd.dt.dayofweek == 3)).astype(int) for dd in days)
+    X = _cinema_comp(X, ctx["visible"], ctx["cin_shows"])
     # relative pair vs film
     X["share"] = X.log_s - np.log1p(X[["fT1", "fT2", "fT3"]].mean(axis=1) / X.fnc3.clip(lower=1))
+    X["pair_vs_mkt"] = X.log_s - X.mk_lpc
     X["p3_rel"] = X.p3 - X.fp3
     X["p1_rel"] = X.p1 - X.fp1
     # cinema
@@ -129,6 +146,21 @@ def build(hist, tgt, ctx):
     return X
 
 
+def _cinema_comp(X, vis, cin_shows):
+    """Other titles in their D1-D3 window at the same cluster on the target date (official, visible)."""
+    v = vis.assign(base=base_title(vis.movie_title))
+    agg = v.groupby(["cinema_ids", "date_show", "base"]).agg(sh=("total_show", "sum"), tx=("total_ticket", "sum")).reset_index()
+    m = X[["cinema_ids", "date_show"]].assign(base=base_title(X.movie_title)).reset_index().merge(
+        agg, on=["cinema_ids", "date_show"], how="left", suffixes=("", "_o"))
+    m = m[m.base != m.base_o]
+    s = m.groupby("index").agg(c_new_n=("base_o", "nunique"), c_new_sh=("sh", "sum"), c_new_tx=("tx", "sum"))
+    X = X.join(s).fillna({"c_new_n": 0, "c_new_sh": 0, "c_new_tx": 0})
+    X["c_new_sh_rel"] = X.c_new_sh / X.cinema_ids.map(cin_shows).fillna(X.c_new_sh.median() + 1)
+    X["c_new_sh_vs_own"] = X.c_new_sh / X.sh3.clip(lower=1)
+    X["c_new_tx_vs_own"] = np.log1p(X.c_new_tx) - np.log1p(X.y3)
+    return X
+
+
 def _open_count(X, rel):
     """Number of other titles opening in (D1, target date] - known release schedule."""
     d = np.sort(rel.d1.values.astype("datetime64[D]"))
@@ -137,19 +169,64 @@ def _open_count(X, rel):
     return b - a
 
 
-def make_ctx(hist, hol, movies, price, size_tx, ramadan_f=RAMADAN_F):
-    """size_tx: transactions used for cinema size (train for both CV and test = past-only info)."""
-    d1 = hist.groupby("movie_title").date_show.min()
-    rel = hist.assign(base=base_title(hist.movie_title)).groupby("base").agg(
+def visible_windows(tx, d1):
+    """D1-D3 rows of every wide release: what test_history exposes, reproduced on train."""
+    x = tx.merge(d1.rename("d1"), left_on="movie_title", right_index=True)
+    return x[(x.date_show >= x.d1) & (x.date_show <= x.d1 + pd.Timedelta(days=2))].drop(columns="d1")
+
+
+def film_table(vis):
+    """Film-level D1-D3 summary used as the 'market' reference (median of films released in prior 28 days)."""
+    g = vis.groupby("movie_title")
+    t = pd.DataFrame({"d1": g.date_show.min(), "occ": g.occupation_rate.mean(),
+                      "tps": g.total_ticket.sum() / g.total_show.sum().clip(lower=1),
+                      "logT": np.log1p(g.total_ticket.sum() / 3),
+                      "lpc": np.log1p(g.total_ticket.sum() / 3 / g.cinema_ids.nunique().clip(lower=1))})
+    return t
+
+
+def make_ctx(visible, hol, movies, price, size_tx, market, ramadan_f=RAMADAN_F):
+    """visible: D1-D3 windows of all wide releases in the period; size_tx: past transactions (train) for
+    cluster statistics; market: film_table over train+test visible windows (only the past 28 days is used)."""
+    rel = visible.assign(base=base_title(visible.movie_title)).groupby("base").agg(
         d1=("date_show", "min"), tix=("total_ticket", "sum")).reset_index()
     rel["tix"] /= 3
     cs = size_tx.groupby("cinema_ids").total_ticket.sum() / size_tx.groupby("cinema_ids").date_show.nunique()
     nf = size_tx.groupby(["cinema_ids", "date_show"]).movie_title.nunique().groupby("cinema_ids").mean()
-    return dict(cal=calendar(hol, ramadan_f), movies=movies, price=price, releases=rel,
-                cin_size=np.log10(cs), cin_nfilms=nf)
+    csh = size_tx.groupby(["cinema_ids", "date_show"]).total_show.sum().groupby("cinema_ids").median()
+    return dict(cal=calendar(hol, ramadan_f), movies=movies, price=price, releases=rel, visible=visible,
+                market=market, cin_size=np.log10(cs), cin_nfilms=nf, cin_shows=csh)
 
 
 def feature_cols(X):
     drop = {"id", "movie_title", "cinema_ids", "city_name", "date_show", "d1", "total_ticket", "scale", "mean3",
             "cal_t", "cal_hist", "r", "w"}
     return [c for c in X.columns if c not in drop and X[c].dtype != object]
+
+
+def dataset(refresh=False):
+    """Cached (Xtr, Xte, Xlim): train-sim wide releases, test rows, and limited-release train-sim rows
+    (training-only extra data, eda/14)."""
+    from common import OUT, load, release_dates, simulate
+    p = OUT / "cache"
+    p.mkdir(parents=True, exist_ok=True)
+    names = ["Xtr", "Xte", "Xlim"]
+    if not refresh and all((p / f"{n}.parquet").exists() for n in names):
+        return tuple(pd.read_parquet(p / f"{n}.parquet") for n in names)
+    d = load()
+    tr, th, te = d["train"], d["hist"], d["test"]
+    first = tr.groupby("movie_title").date_show.min()
+    running = first[first == first.min()].index
+    D_wide = release_dates(tr)
+    vis_tr = visible_windows(tr, D_wide)
+    market = pd.concat([film_table(vis_tr), film_table(th)])
+    ctx_tr = make_ctx(vis_tr, d["hol"], d["movies"], d["price"], tr, market)
+    hs, ts = simulate(tr, D_wide.drop(running, errors="ignore"))
+    Xtr = build(hs, ts, ctx_tr)
+    D_lim = release_dates(tr, 0.5, 0).drop(running, errors="ignore").drop(D_wide.index, errors="ignore")
+    hl, tl = simulate(tr, D_lim)
+    Xlim = build(hl, tl, ctx_tr)
+    Xte = build(th, te, make_ctx(th, d["hol"], d["movies"], d["price"], tr, market))
+    for n, x in zip(names, (Xtr, Xte, Xlim)):
+        x.to_parquet(p / f"{n}.parquet")
+    return Xtr, Xte, Xlim

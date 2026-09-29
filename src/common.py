@@ -65,19 +65,27 @@ def fmt(t: pd.Series) -> pd.Series:
 
 
 def release_dates(tx: pd.DataFrame, frac=0.5, min_nc=25) -> pd.Series:
-    """D1 per film = first date whose cinema coverage reaches `frac` of the film's peak coverage.
+    """D1 per film = first date whose cinema coverage reaches `frac` of peak coverage, searched only
+    inside the continuous screening segment that contains the peak (a paid-preview weekend followed by
+    a gap, e.g. A MINECRAFT MOVIE 4-6 Apr vs release 9 Apr, is skipped - rule from v2).
 
-    Coverage is measured on the base title (2D+3D+IMAX share one D1, like in test_history).
-    Films whose base title opens in < `min_nc` cinemas are dropped: test only contains wide
-    releases (smallest 2D test film opens in 28 cinemas). Tuned in eda/03.
+    Coverage is measured on the base title (2D+3D+IMAX share one D1, like test_history). Base titles
+    opening in < `min_nc` cinemas are dropped: test only contains wide releases.
     """
     x = tx.assign(base=base_title(tx.movie_title))
-    nc = x.groupby(["base", "date_show"]).cinema_ids.nunique().rename("nc").reset_index()
-    nc["peak"] = nc.groupby("base").nc.transform("max")
-    b = nc[nc.nc >= frac * nc.peak].groupby("base").first()
-    b = b[b.nc >= min_nc].date_show
+    nc = x.groupby(["base", "date_show"]).cinema_ids.nunique()
+    out = {}
+    for b, s in nc.groupby(level=0):
+        s = s.droplevel(0)
+        s = s.reindex(pd.date_range(s.index.min(), s.index.max()), fill_value=0)
+        pk = s.idxmax()
+        z = s[:pk][s[:pk] == 0]
+        seg = s[z.index.max() + pd.Timedelta(days=1):] if len(z) else s
+        c = seg[seg >= frac * s.max()]
+        if len(c) and c.iloc[0] >= min_nc:
+            out[b] = c.index[0]
     t = x.drop_duplicates("movie_title").set_index("movie_title").base
-    return t.map(b).dropna().rename("d1")
+    return t.map(pd.Series(out, dtype="datetime64[ns]")).dropna().rename("d1")
 
 
 def simulate(tx: pd.DataFrame, d1: pd.Series, last_date=TRAIN_END, bad=OUTAGE) -> tuple[pd.DataFrame, pd.DataFrame]:

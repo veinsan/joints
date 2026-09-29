@@ -105,9 +105,127 @@ TabPFN-2.5 (Nov 2025) tidak boleh dipakai karena terbit setelah batas.
 Korelasi prediksi 0,92. Di notebook, konteks 10.000 di GPU T4 dan bobot blend dipilih otomatis dari
 argmin kurva temporal.
 
-## 11_lb_probe.py: probing leaderboard
 
-Skor MASE aditif per baris; mengalikan prediksi satu segmen dengan k menggeser skor publik secara
-terukur. Protokol 3 submisi/hari dan file probe ada di `outputs/probes/`.
-Jalankan ulang dengan `python eda/11_lb_probe.py path/ke/submission.csv` agar probe berbasis submisi
-notebook. Hasil k* dimasukkan ke `Settings.SEG_MULT`.
+---
+
+# v3: Mengapa CV 0,30 tetapi public LB 0,45 (script 12 sampai 19)
+
+## 12_gap_analysis.py: jarak CV -> LB sebagian besar adalah komposisi
+
+| Estimasi | LightGBM | v2 (TabPFN-3.5) |
+| :--- | :--- | :--- |
+| OOF biasa | 0,328 | 0,300 |
+| OOF dibobot ke komposisi skala uji | 0,414 | 0,377 |
+| Density-ratio adversarial | 0,398 | - |
+| Public LB | ~0,456 (v1) | 0,4506 |
+
+Uji memuat 13% baris ber-skala <= 20 (train-sim 3%); galat bucket itu 0,6 sampai 2,6. Metrik keputusan v3 =
+**TW-MASE** (`src/evaluate.py`).
+
+## 13_proxy_test_period.py: validasi berlabel di dalam periode uji
+
+Tugas proxy D1,D2 -> D3 bisa dihitung di `test_history`. Galat per bucket skala train CV vs periode uji
+hampir sama; setelah dibobot ke skala uji, CV (0,498) bahkan sedikit di atas periode uji (0,474).
+Level shift kecil: k* = 1,06 di uji (Februari 1,16), gain hanya 0,002.
+
+## 14_small_pairs.py: pasangan kecil
+
+- Bobot komposisi uji di training: memperburuk (0,4094 -> 0,4136).
+- Film rilis terbatas sebagai data latih tambahan: membantu (-0,0035), konsisten di 2 seed fold.
+- Thinning binomial: **cek prepro gagal** - zero-rate pasangan kecil hasil thinning 0,52 vs asli 0,76
+  (thinning meniru penonton sedikit, bukan bioskop mencopot film). TW-MASE memburuk (0,4171).
+- Pasangan s <= 20: 76% target nol, model ~ prediksi nol; galat bucket ini hampir tak tereduksi.
+
+## 15/16: fitur tambahan
+
+Kompetisi per klaster pada tanggal target (film baru di jendela D1-D3 di klaster yang sama, data resmi):
+zero-rate naik monoton 0,13 -> 0,73 menurut kuintilnya, distribusi train/uji sama. Tetapi pada ablation
+2 seed fold, semua grup (jadwal program, first-day, pasar relatif, kompetisi) berada di dalam noise
+(~0,0035). LightGBM jenuh di sisi fitur.
+
+## 17/18: arti "kecil" bergeser
+
+Pada skala absolut yang sama, zero-rate D3 di periode uji jauh lebih kecil (20-50: 0,39 train vs 0,11 uji).
+Di train, kecil = film gagal; di uji, kecil = pasar sepi. Skala relatif pasar menyejajarkan distribusi
+(`log_s` bergeser 0,67, `pair_vs_mkt` 0,14). Bukti validasi bertentangan: proxy periode uji memilih fitur
+"both" (0,467 vs 0,4735), tetapi GroupKFold (+0,0045) dan transfer ramai->sepi dalam train (+0,012)
+memilih "abs". Bulan sepi train tidak cukup sepi (zero-rate hanya turun 0,78 -> 0,72). Keputusan: default
+`abs`, varian `both` diuji A/B di LB.
+
+## 19_segment_stakes.py: segmen kalender tanpa padanan di train (30% baris)
+
+Sisa jarak ~0,07 membutuhkan level asli 2 sampai 3x dari asumsi model di Ramadan dan/atau Lebaran
+(k=3: Ramadan +0,066, Lebaran +0,024). v2 memprediksi ~0 untuk 54% baris Ramadan. Tidak ada probing
+leaderboard: asumsi segmen harus diputuskan dari validasi dan logika domain di dalam notebook.
+
+## Model pretrained: kepatuhan batas 30 Sep 2025
+
+| Model | Revisi / versi | Tanggal | Status |
+| :--- | :--- | :--- | :--- |
+| TabPFN v2 reg | HF `213f8e38`, `tabpfn==2.1.4` | 11 Jun 2025 / 11 Sep 2025 | dipakai v3 |
+| LimiX-16M | HF `4fd2dbad` | 1 Sep 2025 | patuh, belum diuji |
+| TabDPT 1.1 | HF `514eadca`, `tabdpt==1.1.5` | Agu/Sep 2025 | gagal jalan (faiss) |
+| TabPFN-2.5 | - | 6 Nov 2025 | melanggar |
+| TabPFN-3.5 (dipakai v2) | `tabpfn-v3.5-20260909` | Sep 2026 | **melanggar** |
+
+---
+
+# v4: Sumber offset LB tetap ~0,07 (script 20 sampai 25)
+
+Titik LB: v1 0,45625; v2 0,45061 (TW 0,377); v3 0,45731 (TW 0,388). TW-MASE memberi peringkat yang sama
+dengan LB tetapi offset ~0,07 muncul di kedua model -> kesalahan sistematis yang diwarisi dari train.
+
+## 20_pull_policy_shift.py: bioskop di periode uji lebih jarang mencopot film
+
+| tiket/show D1-D2 | berhenti di D3 (train) | berhenti di D3 (uji) |
+| :--- | :--- | :--- |
+| <= 7,8 | 0,50 | 0,22 |
+| 7,8-14,8 | 0,26 | 0,06 |
+| 14,8-25 | 0,085 | 0,03 |
+
+Bukan musim: November/Desember 2025 punya level pasar setara bulan train (153/259 tiket per klaster-hari)
+tetapi zero-rate D3-nya tetap rendah. Bukan data bolong: pola kehadiran D1-D3 train vs uji mirip
+(111: 78% vs 80%), lubang di luar outage Juni median 0,25%.
+
+## 21_pull_odds_correction.py: besar pergeseran
+
+Rekalibrasi logit P(D3 = 0) di periode uji: a = -1,27 (odds x 0,28), sd antar split-half 0,075,
+konsisten per bulan. Di D3 sendiri koreksi tidak menurunkan MASE (nol hanya 8%).
+
+## 22_d3_propensity_transfer.py: jembatan D3 -> D4-D10 lemah
+
+Di train, kecenderungan mencopot di D3 per klaster x bulan hampir tidak memprediksi pencopotan D4-D10
+(korelasi 0,13, slope 0,02). Pergeseran D3 tidak bisa diasumsikan berlaku penuh di horizon target.
+Juga dicek: hipotesis "pencopotan karena kapasitas layar" tidak didukung (penurunan terjadi dengan atau
+tanpa film baru di klaster).
+
+## 23_holiday_calibration.py: kalender libur tidak meremehkan
+
+Grid HOL_LEVEL x SCHOOL_WD: TW-MASE datar 0,4062-0,4108 (noise); bias di baris target hari libur ~0.
+Parameter kalender tetap.
+
+## 24_pull_shift_decision.py: model hurdle + analisis keputusan
+
+Hurdle (klasifier p0 + 19 regresi kuantil, median campuran) vs L1, TW-MASE train OOF:
+L1 0,4087 -> hurdle 0,3874 (-0,021, jauh di atas noise 0,0035). Dunia bergeser (pencopotan dibatalkan
+sesuai a): L1 memburuk ke 0,4479, hurdle lambda=1 0,4211.
+
+## 25_hurdle_lambda_proxy.py: validasi di periode uji membalik
+
+Proxy D3 periode uji (held-out per film, 10 split): hurdle murni kalah dari L1 di 10/10 split
+(0,481-0,485 vs 0,473). Penyebab: hurdle lebih baik pada baris yang laku (0,479 vs 0,492) tetapi jauh
+lebih buruk pada baris yang ternyata nol (0,491 vs 0,275). Blend menang di kedua sisi:
+
+| proxy D3 | L1 | blend 50% hurdle lambda 0 | lambda 0,5 | lambda 1 |
+| :--- | :--- | :--- | :--- | :--- |
+| periode uji held-out | 0,4734 | 0,4728 | 0,4701 | 0,4680 |
+| train-sim OOF | 0,4219 | 0,4172 | - | - |
+
+Tugas utama (TW-MASE), baris lambda x kolom bobot hurdle -> minimax regret atas dunia nyata, dunia
+bergeser, dan proxy periode uji memilih **bobot hurdle 0,75, lambda 0,5** (regret maks ~0,008).
+
+## Model pretrained lain yang dicek (patuh batas 30 Sep 2025)
+
+- LimiX-16M: output point prediction, butuh flash-attn 2.8 (tidak mendukung T4), retrieval > RTX 4090 -> tidak layak.
+- TabDPT 1.1.5: gagal dengan faiss terbaru.
+- GPU lokal Intel Arc: PyTorch XPU butuh `intel-compute-runtime` + `level-zero-loader` (sudo), belum terpasang.
