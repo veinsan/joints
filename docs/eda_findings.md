@@ -229,3 +229,46 @@ bergeser, dan proxy periode uji memilih **bobot hurdle 0,75, lambda 0,5** (regre
 - LimiX-16M: output point prediction, butuh flash-attn 2.8 (tidak mendukung T4), retrieval > RTX 4090 -> tidak layak.
 - TabDPT 1.1.5: gagal dengan faiss terbaru.
 - GPU lokal Intel Arc: PyTorch XPU butuh `intel-compute-runtime` + `level-zero-loader` (sudo), belum terpasang.
+
+---
+
+# v5: setelah v4 = 0,44809 (script 26 sampai 28)
+
+## Kalibrasi validasi terhadap LB
+
+| kappa (porsi pergeseran D3 yang berlaku di D4-D10) | TW v3 | TW v4 | v3 - v4 |
+| :--- | :--- | :--- | :--- |
+| 0 (validasi biasa) | 0,3879 | 0,3911 | -0,003 |
+| 0,5 | 0,4189 | 0,4082 | 0,011 |
+| 1 | 0,4526 | 0,4312 | 0,021 |
+
+Selisih LB v3 - v4 = 0,0092 -> kappa ~ 0,45-0,5; lambda = 0,5 dipertahankan. Offset tersisa ~0,039.
+
+## 26_test_regime_calibration.py: bagian positif sudah terkalibrasi di periode uji
+
+PIT rata-rata 0,513 (train 0,480), rasio median aktual/prediksi 1,005. Tidak ada pergeseran level umum.
+Rasio antar-hari dalam film yang sama mirip train (kecuali Sabtu/Jumat film rilis Kamis 1,19 vs 1,01,
+yang sudah terlihat model lewat bentuk D1-D3).
+
+## 27_zero_classifier_features.py: fitur untuk klasifier pencopotan
+
+| grup | AUC | TW hurdle (nyata, lambda 0) |
+| :--- | :--- | :--- |
+| base | 0,9267 | 0,3874 |
+| + kompetisi per klaster | 0,9304 | 0,3836 |
+| + pergantian program | 0,9250 | 0,3890 |
+| + first day / shows | 0,9270 | 0,3870 |
+| + pasar relatif | 0,9256 | 0,3878 |
+
+Hanya kompetisi per klaster yang dipakai, khusus di klasifier.
+
+## 28_lebaran_analog.py: minggu Lebaran (6,1% baris uji)
+
+- Slate Lebaran 2026 (7 judul, D1 = 18 Mar): D1-D3 rata-rata 167 ribu tiket/hari, ~1,0 juta kursi/hari,
+  okupansi 15-23%.
+- Lebaran 2025 di train (1-7 Apr): 608 ribu tiket/hari (2,8x normal), slate okupansi median 73%;
+  8-11 Apr masih 2,3-3x normal.
+- v4 memprediksi slate 129 ribu tiket/hari (rasio 1,37 -> 0,25), setara okupansi ~13%.
+- Rasio tersirat dari analog 2025 (g x phi): pesimis 0,42 -> 1,40; tengah 0,72 -> 2,4; per klaster median 3,9 (g=phi=1).
+- Tidak bisa divalidasi di train (ekor Lebaran 2025 tidak bias: itu fase turun, bukan lonjakan).
+- v5: analog top-down per klaster dengan rho = 0,5 (rasio rata-rata ~1,7).
