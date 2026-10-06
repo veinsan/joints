@@ -34,3 +34,25 @@ def report(X, pred, w, name=""):
     small = X.scale.values <= 20
     print(f"  {name:42s} OOF {e.mean():.4f} | TW-MASE {tw:.4f} | s<=20 {e[small].mean():.4f} | s>200 {e[X.scale.values > 200].mean():.4f}")
     return tw
+
+
+def test_weights_fd(X, Xte):
+    """Like test_weights but matches the test share of (scale bucket x first sale day), eda/42."""
+    k = lambda D: pd.cut(D.scale, BINS).astype(str) + "|" + D.first_day.astype(str)
+    share_te, share_tr = k(Xte).value_counts(normalize=True), k(X).value_counts(normalize=True)
+    w = k(X).map(share_te / share_tr).fillna(0).astype(float).values
+    return w / w.mean()
+
+
+def kappa_worlds(y, s, cm, p0, Q, a=-1.32, kappa=0.5, seeds=3, qs=np.round(np.arange(0.05, 1.0, 0.05), 2)):
+    """LB-calibrated validation worlds (eda/26): zero targets are un-pulled with prob 1 - p0'/p0,
+    p0' = sigmoid(logit p0 + kappa * a), and replaced by a draw from the OOF positive-part quantiles."""
+    lg = np.log(np.clip(p0, 1e-4, 1 - 1e-4) / (1 - np.clip(p0, 1e-4, 1 - 1e-4)))
+    ps = 1 / (1 + np.exp(-(lg + kappa * a)))
+    out = []
+    for seed in range(seeds):
+        rng = np.random.default_rng(seed)
+        un = (y == 0) & (rng.random(len(y)) < 1 - ps / np.clip(p0, 1e-6, None))
+        dr = np.array([np.interp(u, qs, q) for u, q in zip(rng.random(len(y)), Q)])
+        out.append(np.where(un, np.clip(dr, 0, None) * cm * s, y))
+    return out
