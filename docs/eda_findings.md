@@ -629,3 +629,20 @@ implementasi sederhana ini belum menunjukkan manfaat. v10 hanya memakai metadata
   - Inferensi final hanya membangun komponen berbobot positif, sehingga blend tanpa LightGBM tidak lagi gagal
     assertion.
   - Dunia kappa berasal dari LightGBM, jadi pilihan lambda per model dan blend juga dicetak tanpa lensa kappa.
+
+
+## 65-73 (7 Oktober 2026): level relatif dan pasar sepi
+
+Detail lengkap di `docs/v13_deep_analysis_2026-10-07.md`. Inti: offset validasi-LB yang sama untuk semua model berasal
+terutama dari fitur level absolut. Proxy periode uji: MAE absolut 0,402 vs relatif 0,370, bias +0,116 vs 0; pada skala
+5-50 bias absolut +0,32 sampai +0,38. Pergeseran pencopotan D3 (logit -1,35) menyusut ke -0,21 (eda/68) atau -0,44
+(definisi notebook) dengan tolok ukur relatif klaster. Transfer D3 ke nol D4-D10: kemiringan 0,09. Ramadan dan Natal sesuai
+kalender; hanya Tahun Baru menyimpang (n = 3, tidak diubah).
+
+
+## 79-90 (8 Oktober 2026): binomial thinning
+
+Detail di `docs/v14_thinning_breakthrough_2026-10-08.md`. Offset val-public dijelaskan oleh komposisi, bukan bias label;
+oracle klaster x tanggal adalah artefak; informasi yang hilang = lintasan film setelah D3. Thinning (pi 0,35-0,5)
+mereproduksi label proxy periode uji, komposisi uji, dan 75% pergeseran pencopotan; lookup D4-D10 di dunia thinned
+0,380 (latih mentah) -> 0,355 (latih thinned).

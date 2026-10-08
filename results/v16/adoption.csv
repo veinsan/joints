@@ -1,0 +1,7 @@
+,passed
+TW_gain,False
+temporal_mean,False
+each_month,True
+fold_wins,True
+week_bootstrap,False
+weights_size,True

@@ -4,3 +4,11 @@ __pycache__/
 catboost_info/
 .venv-xpu/
 .venv-tp9/
+
+# Kaggle run artefacts: too large for GitHub (>100 MB) or regenerable.
+# Model weights for the final ZIP stay on disk / Kaggle output, not in git.
+results/*/fm/
+results/*/model_weights.pkl
+results/*/oof_quantiles.npz
+.ruff_cache/
+*.pyc
