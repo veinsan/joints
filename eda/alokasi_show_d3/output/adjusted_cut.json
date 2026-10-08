@@ -1,0 +1,5 @@
+{
+  "train_cut_rate_at_test_d2_show_mix": 0.7365571845803338,
+  "test_cut_rate_at_test_d2_show_mix": 0.6587366694011485,
+  "test_minus_train_gap": -0.07782051517918531
+}

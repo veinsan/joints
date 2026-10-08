@@ -1,0 +1,11 @@
+{
+  "official_cuti_dates_in_package": 14,
+  "dates_marked_normal": 14,
+  "dates_marked_holiday": 0,
+  "test_target_rows_on_cuti": 2392,
+  "test_target_share_on_cuti": 0.03294266708900855,
+  "test_target_pairs_on_cuti": 1580,
+  "test_history_rows_on_cuti": 1629,
+  "train_rows_on_cuti": 5385,
+  "march_20_23_24_test_rows": 1443
+}

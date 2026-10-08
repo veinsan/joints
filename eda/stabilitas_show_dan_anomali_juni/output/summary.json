@@ -1,0 +1,23 @@
+{
+  "ids": 117,
+  "ids_at_least_150_days": 116,
+  "median_id_cv": 0.0576,
+  "median_id_pct_exact_same_consecutive": 0.6424,
+  "median_id_pct_change_le_2_consecutive": 0.9636,
+  "known_events": [
+    {
+      "date": "2025-05-01",
+      "city_name": "JAKARTA",
+      "delta_7d": -35.0,
+      "ratio_7d": 0.9177300201477502
+    },
+    {
+      "date": "2025-07-09",
+      "city_name": "PADANG",
+      "delta_7d": 21.857142857142858,
+      "ratio_7d": 6.464285714285714
+    }
+  ],
+  "number_nonoverlap_peaks_abs_delta_ge_20": 21,
+  "unique_ids_with_peak_ge_20": 8
+}

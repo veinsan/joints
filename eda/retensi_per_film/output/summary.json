@@ -1,0 +1,32 @@
+{
+  "train": {
+    "all_films_with_low_d2": 87,
+    "films_with_at_least_10_low_d2": 38,
+    "median_retention_across_adequate_films": 0.4542635658914729,
+    "q25_retention_across_adequate_films": 0.25271739130434784,
+    "q75_retention_across_adequate_films": 0.6756578947368421,
+    "share_adequate_films_retention_ge70": 0.21052631578947367,
+    "share_adequate_films_retention_le50": 0.5789473684210527,
+    "top5_film_share_of_selected_low_d2": 0.2545045045045045,
+    "top10_film_share_of_selected_low_d2": 0.4189189189189189,
+    "n_selected_low_d2": 444
+  },
+  "test": {
+    "all_films_with_low_d2": 127,
+    "films_with_at_least_10_low_d2": 90,
+    "median_retention_across_adequate_films": 0.8138528138528138,
+    "q25_retention_across_adequate_films": 0.6702127659574468,
+    "q75_retention_across_adequate_films": 0.9136056971514244,
+    "share_adequate_films_retention_ge70": 0.7,
+    "share_adequate_films_retention_le50": 0.1111111111111111,
+    "top5_film_share_of_selected_low_d2": 0.14273995077932733,
+    "top10_film_share_of_selected_low_d2": 0.2649712879409352,
+    "n_selected_low_d2": 2438
+  },
+  "test_adequate_films_above_train_q75": 0.7444444444444445,
+  "median_film_retention_gap_test_minus_train": 0.35958924796134095,
+  "film_bootstrap_median_gap_ci95": [
+    0.16515151515151516,
+    0.48781954887218043
+  ]
+}

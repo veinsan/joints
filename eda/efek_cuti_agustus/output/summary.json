@@ -1,0 +1,13 @@
+{
+  "n_balanced_pairs": 209,
+  "n_base_films": 11,
+  "daily_ticket_event_vs_neighbor_geomean": 2.5585170579186007,
+  "daily_show_event_vs_neighbor_geomean": 0.9477813627792702,
+  "balanced_pair_ticket_median_ratio": 2.5089084496564906,
+  "balanced_pair_tps_median_ratio": 3.027248163530739,
+  "balanced_pair_show_median_ratio": 0.8164965809277261,
+  "films_tps_median_ratio_above_1": 10,
+  "films_tps_median_ratio_below_1": 1,
+  "n_six_day_balanced_pairs": 189,
+  "six_day_relative_monday_tuesday_tps_median_ratio": 2.2759262048090902
+}

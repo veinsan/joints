@@ -1,0 +1,11 @@
+# EDA 105: penutupan Pluit Junction XXI tampak sebagai pengurangan show pada ID Jakarta
+
+[Pembaruan investor Cinema XXI semester I 2025](https://storage.googleapis.com/web-corp-prod-bucket/documents/post/Investor%20Update%201H25.pdf) halaman 12 menyatakan Pluit Junction XXI dengan lima layar ditutup efektif **1 Mei 2025**. [Rilis hasil semester I](https://www.cinema21.co.id/id/newsroom/kinerja-stabil-cinema-xxi-bukukan-pendapatan-rp28-triliun-di-semester-i-2025) bertanggal 28 Juli, tetapi tanggal unggah PDF spesifik belum diverifikasi. Dokumen dipakai untuk audit retrospektif asal dan struktur data, bukan fitur.
+
+Pada ID Jakarta `4ed104ac...`, jumlah seluruh show film turun **415 pada 30 April menjadi 390 pada 1 Mei**, tepat **-25 show** pada tanggal efektif. Dua ID Jakarta lainnya masing-masing berubah 504→504 dan 237→236 show. ID tersebut mencatat sekitar 388-392 show/hari selama 1-7 Mei, sehingga penurunan bukan hanya fluktuasi satu hari. Penurunan -25 adalah yang terbesar di antara **116 ID** yang tercatat pada kedua tanggal.
+
+Perbandingan 14 hari sebelum/sesudah (17-30 April vs 1-14 Mei) yang menjaga komposisi hari pekan memberi rerata **429,57→396,29 show/hari** pada ID terkait (delta -33,29), penurunan absolut terbesar di antara ID aktif pada kedua jendela. Dua ID Jakarta lain turun -9,57 dan -10,07; perubahan jadwal film umum terjadi, sehingga delta 14 hari tidak sama dengan kontribusi pasti Pluit Junction. Namun tanggal, arah, persistensi, dan besaran tepat lima layar × sekitar lima show per layar memperkuat kaitan unit ID dengan footprint operasional XXI. Ini sejalan dengan EDA 104: pembukaan Basko Padang muncul sebagai tambahan show pada ID lama.
+
+`cinema_ids` tidak berisi identitas venue fisik. Kecocokan ini tidak membuktikan show yang hilang persis milik Pluit Junction, bahwa semua lokasi XXI tercakup, atau bahwa tiket/okupansi adalah transaksi mentah. Secara praktis, level historis show per ID dapat berubah karena pembukaan/penutupan lokasi, bukan hanya alokasi film. Validasi berbasis waktu perlu mengaudit perubahan unit kapasitas; fitur prediksi harus berhenti pada pengamatan D3.
+
+Jalankan `E:\datsci\conda_envs\kaggle-py311-d\python.exe eda/penutupan_pluit_junction/closure.py` dari root. Output `jakarta_daily.csv`, `jakarta_comparison.csv`, `apr30_may1_id_change.csv`, `all_id_comparison.csv`, dan `summary.json`.

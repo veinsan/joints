@@ -1,0 +1,127 @@
+{
+ "R2_film_FE": 0.572,
+ "R2_cinema_FE": 0.02,
+ "R2_city_FE": 0.013,
+ "R2_film+cinema_FE": 0.591,
+ "spearman_pair": {
+  "r_mean": {
+   "tix_trend": 0.393,
+   "show_trend": 0.409,
+   "nat_tix_trend": 0.338,
+   "nat_show_trend": 0.415,
+   "nat_tps_d3": 0.398,
+   "nat_tix_d3": 0.465,
+   "n_pairs": 0.369,
+   "footprint_growth": 0.25,
+   "share_d3": -0.034,
+   "scale": 0.312
+  },
+  "n_zero": {
+   "tix_trend": -0.259,
+   "show_trend": -0.436,
+   "nat_tix_trend": -0.282,
+   "nat_show_trend": -0.523,
+   "nat_tps_d3": -0.515,
+   "nat_tix_d3": -0.636,
+   "n_pairs": -0.515,
+   "footprint_growth": -0.185,
+   "share_d3": -0.062,
+   "scale": -0.659
+  }
+ },
+ "spearman_cinema_loo_vs_y": 0.024,
+ "spearman_cinema_resid_loo_vs_resid": 0.163,
+ "train_pairs_with_meta": 0.99,
+ "test_pairs_with_meta": 1.0,
+ "film_median_r_by_horror": {
+  "0": 0.325,
+  "1": 0.39
+ },
+ "film_mean_nzero_by_horror": {
+  "0": 3.238,
+  "1": 2.529
+ },
+ "film_median_r_by_age": {
+  "Dewasa": 0.359,
+  "Dewasa 21": 0.128,
+  "Remaja": 0.367,
+  "Semua Umur": 0.206
+ },
+ "top_genres_train": {
+  "Horror": 2821,
+  "Drama": 2558,
+  "Action": 1614,
+  "Thriller": 1041,
+  "Comedy": 937,
+  "Animation": 546,
+  "Mystery": 466,
+  "Fantasy": 436,
+  "Superhero": 408,
+  "Family": 339,
+  "Adventure": 326,
+  "Romance": 306
+ },
+ "spearman_newrelease_vs_film_r": -0.082,
+ "by_month": {
+  "r_med": {
+   "2025-04": 0.411,
+   "2025-05": 0.414,
+   "2025-06": 0.494,
+   "2025-07": 0.505,
+   "2025-08": 0.379,
+   "2025-09": 0.485
+  },
+  "zero": {
+   "2025-04": 0.341,
+   "2025-05": 0.326,
+   "2025-06": 0.38,
+   "2025-07": 0.271,
+   "2025-08": 0.343,
+   "2025-09": 0.273
+  },
+  "n_film": {
+   "2025-04": 28,
+   "2025-05": 27,
+   "2025-06": 22,
+   "2025-07": 37,
+   "2025-08": 35,
+   "2025-09": 23
+  },
+  "scale_med": {
+   "2025-04": 213.333,
+   "2025-05": 161.667,
+   "2025-06": 148.167,
+   "2025-07": 208.167,
+   "2025-08": 139.667,
+   "2025-09": 147.5
+  },
+  "occ_d1": {
+   "2025-04": 23.4,
+   "2025-05": 14.81,
+   "2025-06": 15.37,
+   "2025-07": 23.175,
+   "2025-08": 15.03,
+   "2025-09": 14.455
+  }
+ },
+ "film.nat_tix_trend train/test median": [
+  0.896,
+  0.857
+ ],
+ "film.nat_show_trend train/test median": [
+  0.841,
+  0.818
+ ],
+ "film.nat_tps_d3 train/test median": [
+  31.382,
+  17.334
+ ],
+ "film.n_pairs train/test median": [
+  33.0,
+  70.0
+ ],
+ "film.footprint_growth train/test median": [
+  1.0,
+  1.039
+ ]
+}

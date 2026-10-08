@@ -1,0 +1,8 @@
+{
+  "train_city_count": 67,
+  "train_id_count": 117,
+  "all_city_count": 69,
+  "all_id_count": 121,
+  "cities_first_seen_after_apr1": 3,
+  "ids_first_seen_after_apr1": 5
+}

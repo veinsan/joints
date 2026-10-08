@@ -1,0 +1,162 @@
+{
+  "train": {
+    "all_valid_rows": 138169,
+    "share_floor_or_ceil_integer_reconstructs_occupancy": 0.49096396442038376,
+    "share_seat_fraction_within_0_1": 0.21695170407254882,
+    "single_show_rows": 7884,
+    "single_share_reconstructs": 0.3455098934550989,
+    "single_median_implied_seats": 145.63106796116506,
+    "single_share_implied_seats_50_to_400": 0.939117199391172,
+    "single_nonfull_occ_ge10_share_fraction_within_0_1": 0.20234741784037558,
+    "single_nonfull_occ_ge10_median_fraction_distance": 0.24785589243421668,
+    "single_exactly_full_rows": 1589,
+    "single_occ_ge10_rows": 4260,
+    "single_occ_ge10_share_reconstructs": 0.05539906103286385,
+    "single_occ_ge20_rows": 2678,
+    "single_occ_ge20_share_reconstructs": 0.033607169529499624,
+    "single_occ_ge80_rows": 343,
+    "single_occ_ge80_share_reconstructs": 0.026239067055393587,
+    "single_top10_capacities": [
+      {
+        "nearest_seats": 192.0,
+        "rows": 99,
+        "films": 54,
+        "clusters": 57
+      },
+      {
+        "nearest_seats": 194.0,
+        "rows": 93,
+        "films": 58,
+        "clusters": 62
+      },
+      {
+        "nearest_seats": 127.0,
+        "rows": 86,
+        "films": 55,
+        "clusters": 47
+      },
+      {
+        "nearest_seats": 143.0,
+        "rows": 62,
+        "films": 38,
+        "clusters": 44
+      },
+      {
+        "nearest_seats": 141.0,
+        "rows": 60,
+        "films": 26,
+        "clusters": 22
+      },
+      {
+        "nearest_seats": 176.0,
+        "rows": 59,
+        "films": 12,
+        "clusters": 17
+      },
+      {
+        "nearest_seats": 151.0,
+        "rows": 54,
+        "films": 34,
+        "clusters": 26
+      },
+      {
+        "nearest_seats": 177.0,
+        "rows": 54,
+        "films": 12,
+        "clusters": 15
+      },
+      {
+        "nearest_seats": 190.0,
+        "rows": 52,
+        "films": 38,
+        "clusters": 39
+      },
+      {
+        "nearest_seats": 128.0,
+        "rows": 49,
+        "films": 33,
+        "clusters": 28
+      }
+    ]
+  },
+  "test": {
+    "all_valid_rows": 31155,
+    "share_floor_or_ceil_integer_reconstructs_occupancy": 0.6772267693789119,
+    "share_seat_fraction_within_0_1": 0.2022468303643075,
+    "single_show_rows": 1542,
+    "single_share_reconstructs": 0.32684824902723736,
+    "single_median_implied_seats": 144.23076923076923,
+    "single_share_implied_seats_50_to_400": 0.9721141374837873,
+    "single_nonfull_occ_ge10_share_fraction_within_0_1": 0.1927927927927928,
+    "single_nonfull_occ_ge10_median_fraction_distance": 0.2435897435897516,
+    "single_exactly_full_rows": 17,
+    "single_occ_ge10_rows": 555,
+    "single_occ_ge10_share_reconstructs": 0.05405405405405406,
+    "single_occ_ge20_rows": 217,
+    "single_occ_ge20_share_reconstructs": 0.02304147465437788,
+    "single_occ_ge80_rows": 7,
+    "single_occ_ge80_share_reconstructs": 0.0,
+    "single_top10_capacities": [
+      {
+        "nearest_seats": 194.0,
+        "rows": 71,
+        "films": 46,
+        "clusters": 49
+      },
+      {
+        "nearest_seats": 192.0,
+        "rows": 57,
+        "films": 34,
+        "clusters": 47
+      },
+      {
+        "nearest_seats": 127.0,
+        "rows": 41,
+        "films": 33,
+        "clusters": 30
+      },
+      {
+        "nearest_seats": 190.0,
+        "rows": 37,
+        "films": 25,
+        "clusters": 32
+      },
+      {
+        "nearest_seats": 143.0,
+        "rows": 30,
+        "films": 19,
+        "clusters": 22
+      },
+      {
+        "nearest_seats": 136.0,
+        "rows": 21,
+        "films": 15,
+        "clusters": 19
+      },
+      {
+        "nearest_seats": 119.0,
+        "rows": 20,
+        "films": 19,
+        "clusters": 16
+      },
+      {
+        "nearest_seats": 128.0,
+        "rows": 16,
+        "films": 12,
+        "clusters": 12
+      },
+      {
+        "nearest_seats": 170.0,
+        "rows": 14,
+        "films": 11,
+        "clusters": 12
+      },
+      {
+        "nearest_seats": 144.0,
+        "rows": 13,
+        "films": 12,
+        "clusters": 12
+      }
+    ]
+  }
+}

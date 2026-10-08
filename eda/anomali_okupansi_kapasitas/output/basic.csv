@@ -1,0 +1,3 @@
+period,rows,pct_occ_over100,pct_occ_zero,pct_tickets_over_implied_seats,median_implied_seats_per_show,p01_implied_seats_per_show,p99_implied_seats_per_show
+test_history,32323,0.0,0.0068681743650032484,0.0,158.62944162436548,41.42160507197593,562.7003484320531
+train,138959,0.0,0.001705539043890644,0.0,150.54040144107051,40.06410256410256,442.3076923076923

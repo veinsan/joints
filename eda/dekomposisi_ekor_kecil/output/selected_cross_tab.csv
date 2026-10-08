@@ -1,0 +1,9 @@
+period,low_d2,small_scale,n
+test,False,False,7576
+test,False,True,359
+test,True,False,1453
+test,True,True,985
+train,False,False,7410
+train,False,True,134
+train,True,False,322
+train,True,True,122

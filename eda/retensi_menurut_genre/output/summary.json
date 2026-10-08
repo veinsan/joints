@@ -1,0 +1,13 @@
+{
+  "n_film_rows": 214,
+  "missing_metadata_film_rows": 0,
+  "metadata_coverage_by_period": {
+    "test": 1.0,
+    "train": 1.0
+  },
+  "well_supported_genres": 5,
+  "well_supported_genres_positive_gap": 5,
+  "well_supported_genres_negative_gap": 0,
+  "well_supported_genres_test_pair_coverage": 0.7455863808322825,
+  "well_supported_genres_train_pair_coverage": 0.7123572170301142
+}

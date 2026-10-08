@@ -1,0 +1,88 @@
+{
+ "test_pair_first_day_offset": {
+  "0": 10876,
+  "1": 758,
+  "2": 189
+ },
+ "train_film_first_dow(not left-censored)": {
+  "Friday": 55,
+  "Wednesday": 44,
+  "Thursday": 32,
+  "Monday": 31,
+  "Tuesday": 28,
+  "Saturday": 21,
+  "Sunday": 10
+ },
+ "train_film_wide_dow(not left-censored)": {
+  "Thursday": 87,
+  "Wednesday": 66,
+  "Friday": 48,
+  "Tuesday": 8,
+  "Saturday": 6,
+  "Monday": 4,
+  "Sunday": 2
+ },
+ "train_film_left_censored": 16,
+ "train_film_pre_wide_days": {
+  "0": 83,
+  "1": 71,
+  "2": 14,
+  "3": 16,
+  "4": 9,
+  "5": 7,
+  "6": 6,
+  "7": 4,
+  "8": 2,
+  "9": 2,
+  "10": 3,
+  "11": 1,
+  "13": 2,
+  "21": 1
+ },
+ "test_film_D1_dow": {
+  "Wednesday": 67,
+  "Thursday": 65,
+  "Friday": 24,
+  "Saturday": 5,
+  "Tuesday": 2
+ },
+ "excluded_pairs": 1450,
+ "excluded_films_all_pairs": [
+  "DEATH WHISPERER 3 (IMAX 2D)",
+  "G-DRAGON IN CINEMA: UBERMENSCH (IMAX 2D)",
+  "ZOOTOPIA 2 (3D)"
+ ],
+ "in_test_rate_by_last_day_offset": {
+  "0": 0.0,
+  "1": 0.0,
+  "2": 1.0
+ },
+ "in_test_rate_by_days": {
+  "1": 0.243,
+  "2": 0.459,
+  "3": 1.0
+ },
+ "in_test_rate_by_tix_decile": {
+  "(0.999, 25.0]": 0.318,
+  "(25.0, 54.0]": 0.692,
+  "(54.0, 93.6]": 0.865,
+  "(93.6, 147.0]": 0.956,
+  "(147.0, 221.0]": 0.977,
+  "(221.0, 318.0]": 0.99,
+  "(318.0, 464.0]": 0.992,
+  "(464.0, 730.0]": 0.999,
+  "(730.0, 1350.8]": 0.999,
+  "(1350.8, 72352.0]": 1.0
+ },
+ "in_test_rate_per_film_desc": {
+  "count": 163.0,
+  "mean": 0.843,
+  "std": 0.227,
+  "min": 0.0,
+  "25%": 0.785,
+  "50%": 0.94,
+  "75%": 0.99,
+  "max": 1.0
+ },
+ "films_partial_exclusion": 129
+}

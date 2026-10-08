@@ -1,0 +1,4 @@
+query,matched_titles,date,dataset_tickets_from_apr1,public_admissions_approx,dataset_to_public_ratio,source_note
+JUMBO,JUMBO,2025-06-02,6098971,10073332,0.605457161542973,"Katadata 2 Jun 2025, 10.073.332 penonton"
+SORE ISTRI DARI MASA DEPAN,SORE ISTRI DARI MASA DEPAN,2025-07-24,1236167,1700000,0.7271570588235294,"Kemenekraf 24 Jul 2025, lebih dari 1,7 juta"
+PABRIK GULA,PABRIK GULA; PABRIK GULA (IMAX 2D); PABRIK GULA UNCUT; PABRIK GULA UNCUT (IMAX 2D),2025-04-07,1418543,2600000,0.5455934615384616,"Cinepoint dikutip Databoks 7 Apr 2025, hampir 2,6 juta"

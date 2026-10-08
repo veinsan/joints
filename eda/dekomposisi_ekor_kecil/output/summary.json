@@ -1,0 +1,13 @@
+{
+  "train_eligible_low_d2_share": 0.10899830220713073,
+  "test_eligible_low_d2_share": 0.2864366985732346,
+  "train_selected_low_d2_share_among_d2_active": 0.05671222378336952,
+  "test_selected_low_d2_share_among_d2_active": 0.24048135726967843,
+  "counterfactual_test_d2_mix_with_train_retention_low_share": 0.17128139243812296,
+  "train_all_selected_low_d2_share": 0.05558337506259389,
+  "test_all_selected_low_d2_share": 0.23503325942350334,
+  "train_all_selected_small_scale_share": 0.03204807210816224,
+  "test_all_selected_small_scale_share": 0.12956714547382628,
+  "train_small_scale_that_are_low_d2_share": 0.4765625,
+  "test_small_scale_that_are_low_d2_share": 0.7328869047619048
+}

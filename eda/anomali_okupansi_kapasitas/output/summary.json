@@ -1,0 +1,42 @@
+{
+  "count": {
+    "test_history": 222,
+    "train": 237
+  },
+  "ticket_median": {
+    "test_history": 1.0,
+    "train": 2.0
+  },
+  "ticket_max": {
+    "test_history": 11,
+    "train": 1999
+  },
+  "show_median": {
+    "test_history": 2.0,
+    "train": 2.0
+  },
+  "n_cinema": {
+    "test_history": 92,
+    "train": 92
+  },
+  "n_films": {
+    "test_history": 61,
+    "train": 68
+  },
+  "n_dates": {
+    "test_history": 56,
+    "train": 63
+  },
+  "sep17_rows": 816,
+  "sep17_zero_occ": 111,
+  "sep17_zero_occ_tickets_ge20": 73,
+  "zero_occ_tickets_ge20_by_period": {
+    "test_history": 0,
+    "train": 73
+  },
+  "train_window_pairs_with_zero_occ_positive_tickets": 17,
+  "train_window_pairs_with_zero_occ_positive_tickets_pct": 0.002128192288432649,
+  "train_window_pairs_sep17": 4,
+  "test_window_pairs_with_zero_occ_positive_tickets": 100,
+  "test_window_pairs_with_zero_occ_positive_tickets_pct": 0.009640412609659694
+}

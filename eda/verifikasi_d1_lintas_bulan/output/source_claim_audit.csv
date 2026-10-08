@@ -1,0 +1,18 @@
+base,source_release_date,source_url,source_type,claim_location,source_note,D1,first_transaction,lead_days,month,lead_group,difference_days,match
+MENDADAK DANGDUT,2025-04-30,https://lsf.go.id/en/film/mendadak-dangdut/401,LSF,narrative,LSF menyebut rilis bioskop 30 April,2025-04-30,2025-04-19,11,2025-04,over_7,0,True
+SAYAP SAYAP PATAH 2: OLIVIA,2025-05-08,https://www.youtube.com/watch?v=OkfUmKHa4gc,exhibitor,teaser_description,Cinepolis teaser 1 April 2025,2025-05-08,2025-04-22,16,2025-05,over_7,0,True
+TABAYYUN,2025-04-30,https://lsf.go.id/film/tabayyun/407,LSF,structured_date,Kolom Tanggal Tayang; bertentangan dengan narasi pada halaman sama,2025-05-08,2025-04-09,29,2025-05,over_7,-8,False
+TABAYYUN,2025-05-08,https://lsf.go.id/film/tabayyun/407,LSF,narrative,Narasi menyebut tayang mulai 8 Mei,2025-05-08,2025-04-09,29,2025-05,over_7,0,True
+TABAYYUN,2025-05-08,https://www.indonesianfilmcenter.com/filminfo/detail/17149/tabayyun,film_database,release_date,Indonesian Film Center mencantumkan tanggal rilis 8 Mei,2025-05-08,2025-04-09,29,2025-05,over_7,0,True
+GODAAN SETAN YANG TERKUTUK,2025-05-15,https://movimax.co.id/article/GODAAN-SETAN-YANG-TERKUTUK,exhibitor,release_date,Movimax mencantumkan release date,2025-05-15,2025-05-15,0,2025-05,same_day,0,True
+MUNGKIN KITA PERLU WAKTU,2025-05-15,https://www.youtube.com/watch?v=JDiLHZZbbSo,exhibitor,teaser_description,Cinepolis teaser 31 Maret 2025,2025-05-15,2025-05-03,12,2025-05,over_7,0,True
+JODOH 3 BUJANG,2023-06-26,https://lsf.go.id/en/film/jodoh-3-bujang/515,LSF,translated_structured_date,Versi bahasa Inggris menulis 2023 meski tahun produksi dan STLS 2025; indikasi salah ketik,2025-06-26,2025-06-15,11,2025-06,over_7,-731,False
+JODOH 3 BUJANG,2025-06-26,https://lsf.go.id/film/jodoh-3-bujang/195,LSF,structured_date,Halaman LSF bahasa Indonesia; halaman bahasa Inggris keliru menulis 2023,2025-06-26,2025-06-15,11,2025-06,over_7,0,True
+SELEPAS TAHLIL,2025-07-10,https://lsf.go.id/film/selepas-tahlil/175,LSF,structured_date,LSF mencantumkan tanggal tayang 10 Juli,2025-07-10,2025-07-04,6,2025-07,1_to_7,0,True
+ASSALAMUALAIKUM BAITULLAH,2025-07-17,https://lsf.go.id/film/assalamualikum-baitullah/173,LSF,structured_date,Ejaan judul LSF sedikit berbeda,2025-07-17,2025-06-15,32,2025-07,over_7,0,True
+LYORA: PENANTIAN BUAH HATI,2025-08-07,https://lsf.go.id/film/lyora/316,LSF,structured_date,Judul dasar disingkat Lyora pada LSF,2025-08-07,2025-07-19,19,2025-08,over_7,0,True
+TINGGAL MENINGGAL,2025-08-14,https://lsf.go.id/film/tinggal-meninggal/329,LSF,structured_date,LSF mencantumkan tanggal tayang 14 Agustus,2025-08-14,2025-07-27,18,2025-08,over_7,0,True
+ANDAI IBU TIDAK MENIKAH DENGAN AYAH,2025-09-04,https://lsf.go.id/film/andai-ibu-tidak-menikah-dengan-ayah/441,LSF,structured_date,LSF mencantumkan tanggal tayang 4 September,2025-09-04,2025-08-23,12,2025-09,over_7,0,True
+GEREJA SETAN,2025-09-11,https://www.movimax.co.id/article/GEREJA-SETAN,exhibitor,release_date,Movimax mencantumkan release date; LSF hanya tahun,2025-09-11,2025-08-13,29,2025-09,over_7,0,True
+SUKMA,2025-09-11,https://lsf.go.id/film/sukma/320,LSF,structured_date,LSF mencantumkan tanggal tayang 11 September,2025-09-11,2025-08-29,13,2025-09,over_7,0,True
+PEREMPUAN PEMBAWA SIAL,2025-09-18,https://lsf.go.id/film/perempuan-pembawa-sial/364,LSF,structured_date,LSF mencantumkan tanggal tayang 18 September,2025-09-18,2025-09-10,8,2025-09,over_7,0,True

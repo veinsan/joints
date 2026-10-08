@@ -1,0 +1,7 @@
+# EDA 077: cakupan tiket relatif angka publik
+
+Pertanyaan: apakah total_ticket merepresentasikan pasar nasional atau cakupan jaringan tertentu?
+
+Hasil: agregat train April 2025 adalah 14.608.950 tiket; [Cinema XXI, rilis 2 Mei 2025](https://www.cinema21.co.id/id/newsroom/cinema-xxi-catat-rekor-baru-lebih-dari-14-juta-penonton-pada-april-2025) melaporkan lebih dari 14 juta penonton di jaringan mereka. Train Q2 April-Juni berjumlah 27.485.375, sedangkan [Cinema XXI, rilis 28 Juli 2025](https://www.cinema21.co.id/newsroom/kinerja-stabil-cinema-xxi-bukukan-pendapatan-rp28-triliun-di-semester-i-2025) melaporkan H1 42,5 juta dan Q2 lebih dari dua kali Q1, yang menyiratkan Q2 >28,3 juta; outage Juni di train dapat menjelaskan sebagian selisih. Hingga 2 Juni, JUMBO berjumlah 6.098.971 tiket di train vs sekitar 10.073.332 penonton nasional, tetapi 31 Maret tidak ada di train. Hingga 24 Juli, SORE ISTRI DARI MASA DEPAN 1.236.167 tiket di train vs lebih dari 1,7 juta penonton menurut Kemenekraf.
+
+Kesimpulan: total_ticket bukan total penonton nasional; cakupannya mirip dengan jaringan besar, mungkin Cinema XXI, tetapi pemilik data belum terkonfirmasi. Angka nasional tidak boleh dipakai sebagai padanan langsung target internal. Istilah `nat_tix` di kode proyek artinya agregat seluruh klaster yang tersedia, bukan seluruh Indonesia. Kesesuaian dengan angka XXI memberi hipotesis asal data, bukan bukti sumber mentah.

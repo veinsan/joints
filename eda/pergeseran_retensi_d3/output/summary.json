@@ -1,0 +1,37 @@
+{
+  "overall": [
+    {
+      "period": "test",
+      "n": 11074.0,
+      "n_films": 162.0,
+      "d3_rate": 0.91547769550298,
+      "d3_dropout": 0.08452230449702003,
+      "median_tps_d2": 14.0,
+      "median_occ_d2": 9.12
+    },
+    {
+      "period": "train",
+      "n": 8835.0,
+      "n_films": 143.0,
+      "d3_rate": 0.8861346915676287,
+      "d3_dropout": 0.1138653084323713,
+      "median_tps_d2": 27.45,
+      "median_occ_d2": 18.54
+    }
+  ],
+  "standardized": {
+    "n_strata": 36,
+    "test_coverage": 0.9568358316778038,
+    "train_d3_rate_at_test_mix": 0.8072066433449717,
+    "test_d3_rate_at_test_mix": 0.922234805587014,
+    "d3_rate_gap_test_minus_train": 0.11502816224204226,
+    "film_bootstrap_95ci": [
+      0.07890484408125394,
+      0.15719691400081945
+    ],
+    "show_adjusted_strata": 43,
+    "show_adjusted_test_coverage": 0.975618566010475,
+    "show_adjusted_gap": 0.09719623466124921
+  },
+  "selection_exact": true
+}

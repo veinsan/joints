@@ -1,0 +1,9 @@
+opening_date,location,city_name,event_type,official_studios,official_city_count,source_url,data_city_first_seen,data_ids_first_seen_on_opening,data_cumulative_city_count,city_count_matches
+2025-03-06,Mall Indramayu XXI,INDRAMAYU,first_city,4.0,,https://www.cinema21.co.id/id/newsroom/pertama-dibuka-di-indramayu-cinema-xxi-tawarkan-pengalaman-sinema-terbaik,2025-04-01,0,66,False
+2025-03-31,Cinema XXI Q1 footprint,,baseline,,66.0,https://www.cinema21.co.id/id/newsroom/di-tengah-kelesuan-jumlah-penonton-cinema-xxi-berhasil-jaga-ebitda-positif-di-kuartal-i-2025-dan-bukukan-pendapatan-rp9292-miliar,,0,66,True
+2025-07-09,Basko City Mall XXI,PADANG,new_venue,5.0,,https://baskocitymall.com/en/news/cinema-xxi-dibuka/,2025-04-01,0,66,False
+2025-07-31,Suzuya Merdeka Mall Siantar XXI,PEMATANG SIANTAR,first_city,4.0,67.0,https://www.cinema21.co.id/id/newsroom/perluas-akses-hiburan-berkualitas-cinema-xxi-hadirkan-bioskop-pertamanya-di-pematangsiantar,2025-07-31,1,67,True
+2025-11-27,Q Square XXI,BOGOR,new_venue,3.0,67.0,https://www.cinema21.co.id/id/newsroom/q-square-lifestyle-park-bogor-optimalkan-fasilitas-hiburan-dengan-kehadiran-bioskop-cinema-xxi,2025-04-01,1,67,True
+2025-12-12,The Aloon Aloon XXI,MAGELANG,first_city,2.0,68.0,https://www.cinema21.co.id/id/newsroom/the-aloon-aloon-xxi-hadir-di-pusat-kota-magelang,2025-12-12,1,68,True
+2025-12-16,Chandra Metro XXI,METRO,first_city,3.0,68.0,https://www.cinema21.co.id/id/newsroom/tambah-layar-di-lampung-cinema-xxi-hadirkan-bioskop-pertamanya-di-kota-metro,,0,68,True
+2025-12-18,Citimall Tuban XXI,TUBAN,first_city,3.0,69.0,https://www.cinema21.co.id/id/newsroom/cinema-xxi-resmikan-bioskop-perdananya-di-tuban-dorong-akses-hiburan-modern-dan-kegiatan-ekonomi-lokal,2025-12-18,1,69,True

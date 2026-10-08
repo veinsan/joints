@@ -1,0 +1,100 @@
+                          film          D1 train_first  train_last  train_days  train_tix  train_max_cin  hist_D1_cin  hist_D1_tix
+0  AIR MATA DI UJUNG SAJADAH 2  2025-10-23  2025-09-26  2025-09-28           2       2188              1           82        16667
+1            DEATH WHISPERER 3  2025-10-01  2025-09-29  2025-09-30           2        514              4           97         7266
+2    JANGAN PANGGIL MAMA KAFIR  2025-10-16  2025-09-16  2025-09-28           6       1104              2           67         8268
+3                PENGIN HIJRAH  2025-10-30  2025-09-12  2025-09-27           4       2755              2           66         8353
+4               RANGGA & CINTA  2025-10-02  2025-09-23  2025-09-30           4       3342              1          110        22976
+5                    REST AREA  2025-10-02  2025-09-23  2025-09-30           7       2593              2           39         7813
+6                  STOLEN GIRL  2025-10-22  2025-09-22  2025-09-22           1         98              1           93         6276
+7     THE STRANGERS: CHAPTER 2  2025-10-01  2025-09-26  2025-09-26           1         95              1          104         8122
+8                 TUKAR TAKDIR  2025-10-02  2025-09-25  2025-09-30           4       2076              1          103        31044
+9                  YAKIN NIKAH  2025-10-09  2025-08-26  2025-09-27           3        596              1           72         8478
+test_pair_first_day_offset: {0: 10876, 1: 758, 2: 189}
+train_film_first_dow(not left-censored): {'Friday': 55, 'Wednesday': 44, 'Thursday': 32, 'Monday': 31, 'Tuesday': 28, 'Saturday': 21, 'Sunday': 10}
+train_film_wide_dow(not left-censored): {'Thursday': 87, 'Wednesday': 66, 'Friday': 48, 'Tuesday': 8, 'Saturday': 6, 'Monday': 4, 'Sunday': 2}
+train_film_left_censored: 16
+train_film_pre_wide_days: {0: 83, 1: 71, 2: 14, 3: 16, 4: 9, 5: 7, 6: 6, 7: 4, 8: 2, 9: 2, 10: 3, 11: 1, 13: 2, 21: 1}
+test_film_D1_dow: {'Wednesday': 67, 'Thursday': 65, 'Friday': 24, 'Saturday': 5, 'Tuesday': 2}
+SORE ISTRI DARI MASA DEPAN  date_show  n_cin   tix  shows dow
+2025-06-28      1    75      1 Sat
+2025-06-29      1   148      2 Sun
+2025-07-02      2  3400     16 Wed
+2025-07-05      1   201      1 Sat
+2025-07-06      1   149      2 Sun
+2025-07-08      1   137      1 Tue
+2025-07-09      1   515      2 Wed
+2025-07-10     58 25764    448 Thu
+JALAN PULANG  date_show  n_cin    tix  shows dow
+2025-06-04      1    902      4 Wed
+2025-06-07      1   3471     20 Sat
+2025-06-14      8   1354      9 Sat
+2025-06-15      6   1526      8 Sun
+2025-06-19    105 132377   1108 Thu
+2025-06-20    110 112439   1970 Fri
+2025-06-21    109 122122   2016 Sat
+2025-06-22    109 130532   2048 Sun
+PENGEPUNGAN DI BUKIT DURI  date_show  n_cin   tix  shows dow
+2025-04-10      1  1999      5 Thu
+2025-04-11      1   183      1 Fri
+2025-04-12      1   160      1 Sat
+2025-04-13      1   167      1 Sun
+2025-04-14      1   150      1 Mon
+2025-04-17     74 43212    597 Thu
+2025-04-18     78 59148    626 Fri
+2025-04-19     78 68173    611 Sat
+DEMON SLAYER -KIMETSU NO YAIBA- THE MOVIE: INFINITY CASTLE  date_show  n_cin    tix  shows dow
+2025-08-14      1    801      3 Thu
+2025-08-15    117 271063   2382 Fri
+2025-08-16    117 174791   2560 Sat
+2025-08-17    117 169573   2435 Sun
+2025-08-18    117 176152   2391 Mon
+2025-08-19    117  65460   2346 Tue
+2025-08-20    116  47384   1521 Wed
+2025-08-21    114  37700   1050 Thu
+FINAL DESTINATION: BLOODLINES  date_show  n_cin    tix  shows dow
+2025-05-06      1    133      1 Tue
+2025-05-09     81  26281    216 Fri
+2025-05-10     82  33157    218 Sat
+2025-05-14    115 126753   1715 Wed
+2025-05-15    116 101982   2170 Thu
+2025-05-16    116 100252   2305 Fri
+2025-05-17    116 139610   2404 Sat
+2025-05-18    116 121043   2643 Sun
+SUPERMAN  date_show  n_cin    tix  shows dow
+2025-07-08      1    428      2 Tue
+2025-07-09    116 119043   1711 Wed
+2025-07-10    116  89120   1671 Thu
+2025-07-11    116  86954   1603 Fri
+2025-07-12    116 135706   1639 Sat
+2025-07-13    116 109922   1676 Sun
+2025-07-14    116  56978   1645 Mon
+2025-07-15    114  45267   1520 Tue
+THUNDERBOLTS*  date_show  n_cin    tix  shows dow
+2025-04-29      2   4924     24 Tue
+2025-04-30    114  92901   1586 Wed
+2025-05-01    115 130713   1640 Thu
+2025-05-02    115  67789   1618 Fri
+2025-05-03    115 108350   1634 Sat
+2025-05-04    115  89270   1719 Sun
+2025-05-05    115  50797   1713 Mon
+2025-05-06    115  41750   1666 Tue
+THE FANTASTIC FOUR: FIRST STEPS  date_show  n_cin    tix  shows dow
+2025-07-22      1   3727     21 Tue
+2025-07-23    116 113688   2511 Wed
+2025-07-24    116  72263   2168 Thu
+2025-07-25    116  75419   2017 Fri
+2025-07-26    115 130266   1948 Sat
+2025-07-27    115 100682   1937 Sun
+2025-07-28    114  42168   1917 Mon
+2025-07-29    111  32105   1809 Tue
+excluded_pairs: 1450
+excluded_films_all_pairs: ['DEATH WHISPERER 3 (IMAX 2D)', 'G-DRAGON IN CINEMA: UBERMENSCH (IMAX 2D)', 'ZOOTOPIA 2 (3D)']
+             n  med_tix  mean_days  frac_last_D3    med_occ
+in_test                                                    
+0.0       1450     21.0   1.594483           0.0   2.627500
+1.0      10373    275.0   2.893184           1.0  11.536667
+in_test_rate_by_last_day_offset: {0: 0.0, 1: 0.0, 2: 1.0}
+in_test_rate_by_days: {1: 0.243, 2: 0.459, 3: 1.0}
+in_test_rate_by_tix_decile: {'(0.999, 25.0]': 0.318, '(25.0, 54.0]': 0.692, '(54.0, 93.6]': 0.865, '(93.6, 147.0]': 0.956, '(147.0, 221.0]': 0.977, '(221.0, 318.0]': 0.99, '(318.0, 464.0]': 0.992, '(464.0, 730.0]': 0.999, '(730.0, 1350.8]': 0.999, '(1350.8, 72352.0]': 1.0}
+in_test_rate_per_film_desc: {'count': 163.0, 'mean': 0.843, 'std': 0.227, 'min': 0.0, '25%': 0.785, '50%': 0.94, '75%': 0.99, 'max': 1.0}
+films_partial_exclusion: 129

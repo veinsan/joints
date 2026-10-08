@@ -1,0 +1,78 @@
+pairs_with_market_index: 7623/7745
+spearman global
+              n_zero  r_mean
+occ13        -0.486   0.252
+occ_rel      -0.490   0.260
+occ_rel_cin  -0.511   0.267
+tps_d3       -0.530   0.377
+tps_rel      -0.533   0.392
+spearman dengan n_zero per bulan D1
+          occ13  occ_rel  occ_rel_cin  tps_d3  tps_rel
+2025-04 -0.548   -0.538       -0.567  -0.529   -0.579
+2025-05 -0.450   -0.420       -0.426  -0.462   -0.432
+2025-06 -0.573   -0.557       -0.602  -0.673   -0.651
+2025-07 -0.552   -0.547       -0.548  -0.583   -0.578
+2025-08 -0.348   -0.351       -0.373  -0.389   -0.388
+2025-09 -0.569   -0.576       -0.584  -0.614   -0.615
+rata-rata jumlah nol (0-7) per bin okupansi, kolom = pasar rendah?
+ mk_low     False  True 
+occ13                  
+(0, 4]      4.60   4.58
+(4, 6]      3.89   4.06
+(6, 8]      4.20   3.75
+(8, 10]     3.91   3.55
+(10, 14]    3.24   3.10
+(14, 20]    2.50   2.44
+(20, 30]    1.95   1.59
+(30, 100]   1.04   0.78
+test_occ_rel_median: 1.103
+train_occ_rel_median: 1.108
+test_occ13_median: 10.99
+train_occ13_median: 20.44
+test_films_with_holiday_in_D4_D10: 33
+                                movie_title         D1  n_hol_D4_D10  n_hol_D1_D3
+                       AVATAR: FIRE AND ASH 2025-12-17             1            0
+                  AVATAR: FIRE AND ASH (3D) 2025-12-17             1            0
+             AVATAR: FIRE AND ASH (IMAX 3D) 2025-12-17             1            0
+                                      TIMUR 2025-12-18             1            0
+THE SPONGEBOB MOVIE: SEARCH FOR SQUAREPANTS 2025-12-24             1            1
+                    PATAH HATI YANG KUPILIH 2025-12-24             1            1
+          COMIC 8 REVOLUTION SANTET K4BINET 2025-12-24             1            1
+         JANUR IRENG: SEWU DINO THE PREQUEL 2025-12-24             1            1
+                                   ANACONDA 2025-12-24             1            1
+                              THE HOUSEMAID 2025-12-31             0            1
+                                DUSUN MAYIT 2025-12-31             0            1
+                               MODUAL NEKAD 2025-12-31             0            1
+                    GREENLAND 2 : MIGRATION 2026-01-07             1            0
+                            MALAM 3 YASINAN 2026-01-08             1            0
+                               UANG PASSOLO 2026-01-08             1            0
+                        MUSUH DALAM SELIMUT 2026-01-08             1            0
+                             SUKA DUKA TAWA 2026-01-08             1            0
+                           WE BURY THE DEAD 2026-01-09             1            0
+            28 YEARS LATER: THE BONE TEMPLE 2026-01-14             0            1
+                          UNEXPECTED FAMILY 2026-01-14             0            1
+                             BIDADARI SURGA 2026-01-15             0            1
+                                 ALAS ROBAN 2026-01-15             0            1
+                   PENUNGGU RUMAH: BUTO IJO 2026-01-15             0            1
+                       PENERBANGAN TERAKHIR 2026-01-15             0            1
+                                    WHISTLE 2026-02-11             1            0
+                WUTHERING HEIGHTS (IMAX 2D) 2026-02-11             1            0
+                          WUTHERING HEIGHTS 2026-02-11             1            0
+                     AIUEO MACAM BETOOL AJA 2026-02-12             1            0
+                         RUMAH TANPA CAHAYA 2026-02-12             1            0
+                       JANGAN SEPERTI BAPAK 2026-02-12             1            0
+                                       GOAT 2026-02-13             1            0
+           TAJ MAHAL: AN ETERNAL LOVE STORY 2026-02-13             1            0
+                    BLADES OF THE GUARDIANS 2026-02-17             0            1
+          BLADES OF THE GUARDIANS (IMAX 2D) 2026-02-17             0            1
+                               WE, EVERYDAY 2026-03-11             1            0
+                                 NUMBER ONE 2026-03-11             1            0
+                           REMINDERS OF HIM 2026-03-11             1            0
+                    TUNGGU AKU SUKSES NANTI 2026-03-18             2            1
+                    DANUR: THE LAST CHAPTER 2026-03-18             2            1
+                            PELANGI DI MARS 2026-03-18             2            1
+         SUZZANNA: SANTET DOSA DI ATAS DOSA 2026-03-18             2            1
+                           SENIN HARGA NAIK 2026-03-18             2            1
+          DANUR: THE LAST CHAPTER (IMAX 2D) 2026-03-18             2            1
+                                   NA WILLA 2026-03-18             2            1
+train_films_with_holiday_in_D4_D10: 59

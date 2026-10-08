@@ -1,0 +1,25 @@
+adv_auc_all: 0.6813
+adv_top_gain: {'nat_tps_d3': 0.378, 'nat_tix_d3': 0.276, 'n_pairs': 0.237, 'd1_dow': 0.055, 'occupation_rate_d2': 0.029, 'show_trend': 0.007, 'seats_per_show_d3': 0.006, 'occupation_rate_d3': 0.005, 'total_ticket_d1': 0.001, 'tix_trend': 0.001}
+adv_auc_shape_plus_occ: 0.6928
+adv_auc_shape_only: 0.5108
+seats_per_show_by_cinema_corr_train_test: 0.959
+seats_per_show_median_train_test: [148.9, 150.0]
+test per bulan D1
+          tps_d3  occ_d3   scale  n_pairs
+m                                       
+2025-10   14.00    9.78   78.50     91.0
+2025-11   25.50   16.80  156.00     96.0
+2025-12   43.21   30.31  222.33     81.0
+2026-01   23.00   15.60   99.00     88.0
+2026-02   10.00    6.51   45.67     72.0
+2026-03   12.40    7.90   61.00    103.0
+train per bulan D1
+          tps_d3  occ_d3   scale  n_pairs
+m                                       
+2025-04   39.00   27.60  213.33     69.0
+2025-05   29.00   19.13  161.67     95.0
+2025-06   25.00   18.70  148.17     58.0
+2025-07   38.10   25.74  208.17     87.0
+2025-08   32.00   21.03  139.67     81.0
+2025-09   26.68   18.34  147.50     83.0
+frac_films_npairs_lt10 train/test: [0.221, 0.031]

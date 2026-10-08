@@ -1,0 +1,21 @@
+{
+  "padang_ids": 2,
+  "padang_days_before": 21,
+  "padang_days_after": 21,
+  "padang_mean_shows_before": 56.81,
+  "padang_mean_shows_after": 80.24,
+  "padang_show_ratio": 1.412,
+  "padang_rank_show_ratio": 1,
+  "comparison_cities": 66,
+  "id_count_train": 117,
+  "id_median_daily_shows_quantiles": {
+    "0": 4.0,
+    "0.25": 19.0,
+    "0.5": 28.0,
+    "0.75": 56.0,
+    "0.9": 130.60000000000005,
+    "1": 503.0
+  },
+  "id_over_40_median_daily_shows": 45,
+  "id_over_100_median_daily_shows": 16
+}

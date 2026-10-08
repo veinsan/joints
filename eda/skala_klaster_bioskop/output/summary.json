@@ -1,0 +1,32 @@
+{
+  "train": {
+    "n_cinema_ids": 117,
+    "n_city_names": 67,
+    "cinema_ids_multiple_cities": 0,
+    "ticket_sum": 49208449,
+    "show_sum": 1074281,
+    "max_show_film_cluster_day": 285,
+    "film_cluster_days_over_100_shows": 274,
+    "max_show_cluster_day_all_films": 540,
+    "median_show_cluster_day_all_films": 29.0
+  },
+  "test_history": {
+    "n_cinema_ids": 121,
+    "n_city_names": 69,
+    "cinema_ids_multiple_cities": 0,
+    "ticket_sum": 7254250,
+    "show_sum": 265412,
+    "max_show_film_cluster_day": 278,
+    "film_cluster_days_over_100_shows": 54,
+    "max_show_cluster_day_all_films": 477,
+    "median_show_cluster_day_all_films": 12.0
+  },
+  "september_train": {
+    "city_names_monthly": 67,
+    "cinema_ids_monthly": 117,
+    "median_city_names_daily": 67.0,
+    "median_cinema_ids_daily": 117.0,
+    "median_shows_daily": 6188.0,
+    "max_shows_daily": 6462
+  }
+}

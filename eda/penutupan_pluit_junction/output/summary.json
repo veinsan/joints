@@ -1,0 +1,13 @@
+{
+  "target_id": "4ed104ac0de10ba7eef50158603e0b32",
+  "shows_apr30": 415,
+  "shows_may1": 390,
+  "immediate_delta": -25,
+  "rank_negative_daily_delta": 1,
+  "ids_with_both_days": 116,
+  "target_mean_shows_before_14d": 429.57,
+  "target_mean_shows_after_14d": 396.29,
+  "target_mean_delta_14d": -33.29,
+  "rank_negative_14d_delta": 1,
+  "ids_with_both_14d_windows": 116
+}

@@ -1,0 +1,11 @@
+{
+  "v2_pairs_total": 7988,
+  "affected_pairs": 267,
+  "affected_fraction": 0.0334,
+  "affected_movie_titles": 3,
+  "affected_base_titles": 3,
+  "affected_target_rows": 1335,
+  "affected_target_positive_rows": 930,
+  "target_rows_total": 55916,
+  "affected_target_fraction": 0.0239
+}
